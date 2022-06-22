@@ -13,6 +13,15 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -28,39 +37,6 @@ public class Order implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Users client;
-
-    public Order() { 
-    }
-
-    public Order(Long id, Instant moment, Users client) {
-        this.id = id;
-        this.moment = moment;
-        this.client = client;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Instant getMoment() {
-        return moment;
-    }
-
-    public void setMoment(Instant moment) {
-        this.moment = moment;
-    }
-
-    public Users getClient() {
-        return client;
-    }
-
-    public void setClient(Users client) {
-        this.client = client;
-    }
 
     @Override
     public int hashCode() {
@@ -86,8 +62,5 @@ public class Order implements Serializable {
             return false;
         return true;
     }
-    
-    
-
     
 }

@@ -12,8 +12,18 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AccessLevel;
 
 
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -28,75 +38,9 @@ public class Users implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
+    @Setter(AccessLevel.NONE)
     private List<Order> orders = new ArrayList<>();
    
-   
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-
-    public Users() {
-    }
-
-
-    public Users(Long id, String name, String email, String phone, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    public String getPhone() {
-        return phone;
-    }
-
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 
     @Override
@@ -123,8 +67,6 @@ public class Users implements Serializable {
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-
-    
+    }  
     
 }
